@@ -14,5 +14,7 @@ migratedown:
 	migrate -path db/migrations -database "$(DB_URL)" -verbose down
 sqlc:
 	sqlc generate
+test:
+	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc mysql
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc mysql test
