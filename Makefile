@@ -12,6 +12,10 @@ migrateup:
 	migrate -path db/migrations -database "$(DB_URL)" -verbose up
 migratedown:
 	migrate -path db/migrations -database "$(DB_URL)" -verbose down
+migrateup1:
+	migrate -path db/migrations -database "$(DB_URL)" -verbose up 1
+migratedown1:
+	migrate -path db/migrations -database "$(DB_URL)" -verbose down 1
 sqlc:
 	sqlc generate
 test:
@@ -21,4 +25,4 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/store.go simple_bank/db/sqlc Store
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc mysql test mock
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc mysql test mock migratedown1 migrateup1
